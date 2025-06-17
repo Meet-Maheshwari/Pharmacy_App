@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "./models/User.js";
+import Product from "./models/Product.js";
 
 export const generateToken = (userId, res) => {
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
@@ -31,7 +32,15 @@ export const getUser = async (req, res) => {
     }
 
     const userId = decoded.userId;
-    const user = await User.findById(userId);
+    const user = await User.findById(userId)
+      .populate({
+        path: "orders.order",
+        populate: {
+          path: "products.product",
+          model: "Product",
+        },
+      })
+      .populate("cart.product");
     if (!user) {
       return res.status(400).json({ message: "User not found!" });
     }

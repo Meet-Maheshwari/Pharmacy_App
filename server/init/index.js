@@ -17,7 +17,11 @@ main()
 
 const initDB = async () => {
   await Product.deleteMany({});
-  await Product.insertMany(data);
+  const modifiedData = data.map((dt) => ({
+    ...dt,
+    inStock: true,
+  }));
+  await Product.insertMany(modifiedData);
   console.log("Data initialized successfully");
 };
 

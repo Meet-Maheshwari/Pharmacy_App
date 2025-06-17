@@ -31,7 +31,7 @@ export const signup = async (req, res) => {
       return res.status(400).json({ message: "Failed to create user" });
     }
 
-    return res.status(200).json({ message: "Account created successfully" });
+    return res.status(200).json(user);
   } catch (err) {
     console.log("Error in signup controller", err.message);
     return res.status(500).json({ message: "Internal server error" });
@@ -60,9 +60,7 @@ export const login = async (req, res) => {
 
     generateToken(user._id, res);
 
-    return res
-      .status(200)
-      .json({ message: "Welcome back to our Pharmacy App" });
+    return res.status(200).json(user);
   } catch (error) {
     console.log("Error in login controller", error.message);
     return res.status(500).json({ message: "Internal server error" });

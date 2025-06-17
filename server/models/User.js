@@ -26,10 +26,8 @@ const userSchema = new mongoose.Schema({
   orders: {
     type: [
       {
-        order: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Order",
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Order",
       },
     ],
     default: [],

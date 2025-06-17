@@ -6,11 +6,24 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+
     total_price: {
       type: Number,
+      required: true,
     },
-    address: {
+    customerAddress: {
+      type: {
+        deliveryAdd: { type: String, required: true },
+        city: { type: String, required: true },
+        state: { type: String, required: true },
+        country: { type: String, required: true },
+        zipCode: { type: String, required: true },
+      },
+    },
+    paymentMethod: {
       type: String,
+      enum: ["Cash on Delivery", "Online/Card Payment"],
+      required: true,
     },
     status: {
       type: String,

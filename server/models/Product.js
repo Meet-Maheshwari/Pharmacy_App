@@ -25,6 +25,14 @@ const productSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  category: {
+    type: String,
+    enum: ["Pain Relievers", "Allergy", "Protein & Vitamins", "Skin Care"],
+  },
+  inStock: {
+    type: Boolean,
+    default: true,
+  },
   desc: {
     type: String,
   },
