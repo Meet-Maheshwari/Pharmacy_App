@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import DirectOrderShippingForm from "../components/DirectOrderShippingForm";
 import { useProductStore } from "../store/useProductStore";
+import Footer from "../components/Footer";
 
 const DirectOrder = () => {
   const { id } = useParams();
@@ -41,6 +42,7 @@ const DirectOrder = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
@@ -222,6 +224,8 @@ const DirectOrder = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 
