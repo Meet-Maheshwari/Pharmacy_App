@@ -98,7 +98,7 @@ export const chatbot = async (req, res) => {
       tools,
       responseMimeType: "text/plain",
     };
-    const model = "gemini-2.0-flash";
+    const model = process.env.GEMINI_MODEL;
     const contents = [
       {
         role: "user",
