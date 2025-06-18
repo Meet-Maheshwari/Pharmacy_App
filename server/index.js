@@ -14,7 +14,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
-const allowOrigins = ["mypharma-three.vercel.app"];
+const allowOrigins = ["https://mypharma-three.vercel.app"];
 
 app.use(cookieParser());
 app.use(express.json());
