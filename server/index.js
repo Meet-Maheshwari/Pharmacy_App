@@ -21,17 +21,22 @@ app.use(express.json());
 app.use(cors({ origin: allowOrigins, credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 
-app.listen(PORT, () => {
-  console.log(`App is listening on PORT ${PORT}`);
-});
+async function startServer() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URL);
+    console.log("Connected to database");
 
-async function main() {
-  await mongoose.connect(process.env.MONGODB_URL);
+    app.listen(PORT, () => {
+      console.log(`App is listening on PORT ${PORT}`);
+    });
+  } catch (err) {
+    console.error("Error while connecting to database", err.message);
+    process.exit(1);
+  }
 }
 
-main()
-  .then(() => console.log("Connected to database"))
-  .catch((err) => console.log("Error while connecting to database", err));
+startServer();
+
 
 app.use("/api/auth", userRoutes);
 app.use("/api/products", productRoutes);
