@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import User from "./models/User.js";
-import Product from "./models/Product.js";
 
 export const generateToken = (userId, res) => {
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
