@@ -52,7 +52,7 @@ export const chatbot = async (req, res) => {
     await initDB();
 
     const ai = new GoogleGenAI({
-      apiKey: "AIzaSyDumeWvV_wX8XNzylrgikn76fRD8w8wXZk",
+      apiKey: process.env.GEMINI_API_KEY,
     });
     const tools = [
       {
@@ -304,7 +304,7 @@ export const chatbot = async (req, res) => {
         });
 
         const final_response = await ai.models.generateContent({
-          model: "gemini-2.0-flash",
+          model: process.env.GEMINI_MODEL,
           contents: contents,
           config: config,
         });

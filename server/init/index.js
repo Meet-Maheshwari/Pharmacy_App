@@ -6,9 +6,7 @@ import Product from "../models/Product.js";
 dotenv.config();
 
 async function main() {
-  await mongoose.connect(
-    "mongodb+srv://meetmaheshwari2107:IqSQ7iboGHFYsffW@cluster0.icznkwu.mongodb.net/"
-  );
+  await mongoose.connect(process.env.MONGODB_URL);
 }
 
 main()

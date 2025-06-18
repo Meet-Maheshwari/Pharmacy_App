@@ -1,7 +1,6 @@
 import Product from "../models/Product.js";
 import moment from "moment";
 import { getUser } from "../utils.js";
-import User from "../models/User.js";
 import Order from "../models/Order.js";
 
 export const searchByCategory = async (req, res) => {
