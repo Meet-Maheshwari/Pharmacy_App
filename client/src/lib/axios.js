@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "https://pharmacy-app-lovat.vercel.app",
+  baseURL: "https://mypharma-eight.vercel.app",
   withCredentials: true,
 });
